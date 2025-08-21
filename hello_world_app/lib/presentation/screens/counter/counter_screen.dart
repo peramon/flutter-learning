@@ -53,40 +53,37 @@ class _CounterScreenState extends State<CounterScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                // setState notifica a Flutter que el estado ha cambiado y necesita reconstruir el widget
-                clickCounter++; // Incrementa el contador de clics
-              });
-            },
-            child: Icon(Icons.refresh_outlined),
-          ),
           const SizedBox(height: 10), // Espacio entre los botones
-          FloatingActionButton(
-            shape: StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                // setState notifica a Flutter que el estado ha cambiado y necesita reconstruir el widget
-                clickCounter++; // Incrementa el contador de clics
-              });
-            },
-            child: Icon(Icons.plus_one),
-          ),
+          CustomButton(icon: Icons.refresh_outlined),
           const SizedBox(height: 10), // Espacio entre los botones
-          FloatingActionButton(
-            shape: StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                // setState notifica a Flutter que el estado ha cambiado y necesita reconstruir el widget
-                clickCounter--; // Incrementa el contador de clics
-              });
-            },
-            child: Icon(Icons.exposure_minus_1),
-          ),
+          CustomButton(icon: Icons.plus_one_outlined),
+          const SizedBox(height: 10), // Espacio entre los botones
+          CustomButton(icon: Icons.exposure_minus_1),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final IconData icon;
+
+  const CustomButton({super.key, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: StadiumBorder(),
+      onPressed: () {
+        // if (clickCounter == 0) {
+        //   return; // Evita que el contador sea negativo
+        // }
+        // clickCounter--;
+        // setState(() {
+        //   // setState notifica a Flutter que el estado ha cambiado y necesita reconstruir el widget
+        // });
+      },
+      child: Icon(icon),
     );
   }
 }
