@@ -54,11 +54,35 @@ class _CounterScreenState extends State<CounterScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const SizedBox(height: 10), // Espacio entre los botones
-          CustomButton(icon: Icons.refresh_outlined),
+          CustomButton(
+            icon: Icons.refresh_outlined,
+            onPressed: () {
+              setState(() {
+                clickCounter = 0; // Reinicia el contador al presionar el botón
+              });
+            },
+          ),
           const SizedBox(height: 10), // Espacio entre los botones
-          CustomButton(icon: Icons.plus_one_outlined),
+          CustomButton(
+            icon: Icons.plus_one_outlined,
+            onPressed: () {
+              setState(() {
+                clickCounter++; // Reinicia el contador al presionar el botón
+              });
+            },
+          ),
           const SizedBox(height: 10), // Espacio entre los botones
-          CustomButton(icon: Icons.exposure_minus_1),
+          CustomButton(
+            icon: Icons.exposure_minus_1,
+            onPressed: () {
+              if (clickCounter == 0) {
+                return; // Evita que el contador sea negativo
+              }
+              setState(() {
+                clickCounter--; // Reinicia el contador al presionar el botón
+              });
+            },
+          ),
         ],
       ),
     );
@@ -67,22 +91,17 @@ class _CounterScreenState extends State<CounterScreen> {
 
 class CustomButton extends StatelessWidget {
   final IconData icon;
+  final VoidCallback? onPressed;
 
-  const CustomButton({super.key, required this.icon});
+  const CustomButton({super.key, required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      shape: StadiumBorder(),
-      onPressed: () {
-        // if (clickCounter == 0) {
-        //   return; // Evita que el contador sea negativo
-        // }
-        // clickCounter--;
-        // setState(() {
-        //   // setState notifica a Flutter que el estado ha cambiado y necesita reconstruir el widget
-        // });
-      },
+      shape: StadiumBorder(), // Forma del botón redondeada
+
+      // enableFeedback: true,
+      onPressed: onPressed,
       child: Icon(icon),
     );
   }
