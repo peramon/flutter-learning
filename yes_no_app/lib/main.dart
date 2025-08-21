@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/config/theme/app_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,10 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
+      theme: AppTheme(selectedColor: 5).theme(),
       home: Scaffold(
         appBar: AppBar(title: const Text('Material App Bar')),
         body: Center(
-          child: FilledButton.tonal(onPressed: () {}, child: Text('Clcik me')),
+          child: FilledButton.tonal(onPressed: () {}, child: Text('Click me')),
         ),
       ),
     );
