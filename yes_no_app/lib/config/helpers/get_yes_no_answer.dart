@@ -18,10 +18,11 @@ class GetYesNoAnswer {
     //   fromWho: FromWho.hers,
     //   imageUrl: response.data['image'],
     // );
-    return Message(
-      text: yesNoModel.answer,
-      fromWho: FromWho.hers,
-      imageUrl: yesNoModel.image,
-    );
+    // return Message(
+    //   text: yesNoModel.answer,
+    //   fromWho: FromWho.hers,
+    //   imageUrl: yesNoModel.image,
+    // );
+    return yesNoModel.toMessageEntity();
   }
 }
