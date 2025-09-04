@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:videos_tk/config/theme/app_theme.dart';
+import 'package:videos_tk/presentation/providers/discover_provider.dart';
+import 'package:videos_tk/presentation/screens/discover/discover_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,13 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Videos TK',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme().getTheme(),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Material App Bar')),
-        body: const Center(child: Text('Hello World')),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => DiscoverProvider())],
+      child: MaterialApp(
+        title: 'Videos TK',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme().getTheme(),
+        home: DiscoverScreen(),
       ),
     );
   }
