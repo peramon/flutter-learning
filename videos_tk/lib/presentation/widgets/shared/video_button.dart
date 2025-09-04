@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:videos_tk/config/helpers/human_formats.dart';
 import 'package:videos_tk/domain/entities/video_post.dart';
 
 class VideoButton extends StatelessWidget {
@@ -44,7 +45,7 @@ class _CustomIconButton extends StatelessWidget {
           onPressed: () {},
           icon: Icon(iconData, color: color, size: 30),
         ),
-        Text('$value'),
+        Text(HumanFormats.humanReadbleNumber(value.toDouble())),
       ],
     );
   }
