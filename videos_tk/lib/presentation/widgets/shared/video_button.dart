@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:videos_tk/config/helpers/human_formats.dart';
 import 'package:videos_tk/domain/entities/video_post.dart';
@@ -20,6 +21,16 @@ class VideoButton extends StatelessWidget {
           value: video.views,
           iconData: Icons.remove_red_eye_outlined,
           // iconColor: Colors.red,
+        ),
+        const SizedBox(height: 20),
+        SpinPerfect(
+          infinite: true,
+          duration: const Duration(seconds: 5),
+          child: _CustomIconButton(
+            value: 0,
+            iconData: Icons.play_circle_outline,
+            // iconColor: Colors.red,
+          ),
         ),
       ],
     );
@@ -45,7 +56,7 @@ class _CustomIconButton extends StatelessWidget {
           onPressed: () {},
           icon: Icon(iconData, color: color, size: 30),
         ),
-        Text(HumanFormats.humanReadbleNumber(value.toDouble())),
+        if (value > 0) Text(HumanFormats.humanReadbleNumber(value.toDouble())),
       ],
     );
   }
