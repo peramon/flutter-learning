@@ -23,15 +23,18 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
   void initState() {
     super.initState();
     controller =
-        // VideoPlayerController.networkUrl(
-        //     Uri.parse(
-        //       'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-        //     ),
-        //   )
-        VideoPlayerController.asset(widget.videoUrl)
+        VideoPlayerController.networkUrl(
+            Uri.parse(
+              'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+            ),
+          )
           ..play()
           ..setLooping(true)
           ..setVolume(0);
+    // VideoPlayerController.asset(widget.videoUrl)
+    //   ..play()
+    //   ..setLooping(true)
+    //   ..setVolume(0);
     // ..setVolume(0)
     // ..setLooping(true)
     // ..play();
